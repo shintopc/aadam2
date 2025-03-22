@@ -23,10 +23,14 @@ body {
 }
 
 .carousel-caption {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better readability */
   padding: 20px;
   border-radius: 10px;
-  bottom: 20%; /* Adjust this to position the caption */
+  bottom: 10%; /* Adjust this to position the caption */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%; /* Ensure the caption doesn't overflow */
+  max-width: 800px; /* Limit the width for larger screens */
 }
 
 .carousel-caption h1 {
@@ -44,6 +48,54 @@ body {
   gap: 10px;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.cta-buttons .btn {
+  font-size: 1rem;
+  padding: 10px 20px;
+}
+
+/* Responsive Design for Carousel */
+@media (max-width: 768px) {
+  .carousel {
+    height: 50vh; /* Adjust height for smaller screens */
+  }
+
+  .carousel-caption {
+    bottom: 5%; /* Adjust caption position for smaller screens */
+  }
+
+  .carousel-caption h1 {
+    font-size: 2rem;
+  }
+
+  .carousel-caption p {
+    font-size: 1rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel {
+    height: 40vh; /* Adjust height for mobile screens */
+  }
+
+  .carousel-caption h1 {
+    font-size: 1.5rem;
+  }
+
+  .carousel-caption p {
+    font-size: 0.9rem;
+  }
+
+  .cta-buttons .btn {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
 }
 
 /* About Us Section */
