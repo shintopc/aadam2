@@ -6,45 +6,87 @@ body {
   line-height: 1.6;
 }
 
-/* Hero Section */
+/* Header */
+header {
+  background: #000000;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  height: 70px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Hero Section: Custom Carousel */
 .hero {
   position: relative;
   overflow: hidden;
 }
 
 .carousel {
-  height: 70vh; /* Adjust this value to control the height of the carousel */
+  position: relative;
+  width: 100%;
+  height: 70vh; /* Adjust height as needed */
 }
 
-.carousel-image {
+.slide {
+  position: absolute;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures the image covers the area without distortion */
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
-.carousel-caption {
-  background: rgba(0, 0, 0, 0.6); /* Semi-transparent background for better readability */
+.slide.active {
+  opacity: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
   padding: 20px;
   border-radius: 10px;
-  bottom: 20%; /* Adjust this to position the caption */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%; /* Ensure the caption doesn't overflow */
-  max-width: 800px; /* Limit the width for larger screens */
-  text-align: center;
-  z-index: 10; /* Ensure captions are above the carousel images */
+  width: 90%;
+  max-width: 800px;
 }
 
-.carousel-caption h1 {
+.caption h1 {
   font-size: 3rem;
   margin-bottom: 10px;
-  color: #fff; /* Ensure text is visible */
 }
 
-.carousel-caption p {
+.caption p {
   font-size: 1.2rem;
   margin-bottom: 20px;
-  color: #fff; /* Ensure text is visible */
 }
 
 .cta-buttons {
@@ -54,53 +96,61 @@ body {
   flex-wrap: wrap;
 }
 
-.cta-buttons .btn {
-  font-size: 1rem;
+.cta-button {
+  background: #ff6600;
+  color: #fff;
   padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background 0.3s ease;
 }
 
-/* Responsive Design for Carousel */
-@media (max-width: 768px) {
-  .carousel {
-    height: 50vh; /* Adjust height for smaller screens */
-  }
-
-  .carousel-caption {
-    bottom: 10%; /* Adjust caption position for smaller screens */
-    padding: 15px;
-  }
-
-  .carousel-caption h1 {
-    font-size: 2rem;
-  }
-
-  .carousel-caption p {
-    font-size: 1rem;
-  }
-
-  .cta-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
+.cta-button:hover {
+  background: #e65c00;
 }
 
-@media (max-width: 480px) {
-  .carousel {
-    height: 40vh; /* Adjust height for mobile screens */
-  }
+/* Navigation Arrows */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
 
-  .carousel-caption h1 {
-    font-size: 1.5rem;
-  }
+.prev {
+  left: 10px;
+}
 
-  .carousel-caption p {
-    font-size: 0.9rem;
-  }
+.next {
+  right: 10px;
+}
 
-  .cta-buttons .btn {
-    font-size: 0.9rem;
-    padding: 8px 16px;
-  }
+/* Dots Navigation */
+.dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot.active {
+  background: #fff;
 }
 
 /* About Us Section */
@@ -231,4 +281,51 @@ footer {
   color: #fff;
   text-align: center;
   padding: 20px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .carousel {
+    height: 50vh; /* Adjust height for smaller screens */
+  }
+
+  .caption h1 {
+    font-size: 2rem;
+  }
+
+  .caption p {
+    font-size: 1rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .map iframe {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel {
+    height: 40vh; /* Adjust height for mobile screens */
+  }
+
+  .caption h1 {
+    font-size: 1.5rem;
+  }
+
+  .caption p {
+    font-size: 0.9rem;
+  }
+
+  .cta-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
 }
