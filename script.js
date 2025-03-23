@@ -31,7 +31,7 @@ function goToSlide(index) {
 }
 
 // Auto-scroll every 2 seconds
-setInterval(nextSlide, 3000);
+setInterval(nextSlide, 2000);
 
 // Initialize the first slide
 showSlide(currentSlide);
